@@ -1,26 +1,36 @@
-NAME = client server
+NAME 		= 	client server
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CC 			= 	gcc
+CFLAGS 		= 	-Wall -Werror -Wextra
 
-all: $(NAME)
+LIBFT 		= 	lib/libft/libft.a
 
-$(NAME): client.c server.c
-	@make -C libft/
-	$(CC) $(CFLAGS) client.c -L./libft/ -lft -o client
-	$(CC) $(CFLAGS) server.c -L./libft/ -lft -o server
+SRCS_MAIN	=	src/server.c	\
+				src/client.c
 
-libft_clean:
-					make -C $(LIBFT_LIB) clean
+OBJ			=	obj
+OBJ_MAIN	=	$(SRCS_MAIN:src/%.c=$(OBJ)/%.o)
 
-libft_fclean:
-					make -C $(LIBFT_LIB) fclean
+all: 			$(NAME)
 
-clean:	libft_clean
-	rm -f client.o server.o
+$(LIBFT):
+				@cd lib/libft && make -s
 
-fclean: clean libft_fclean
-	rm -f $(NAME)
+$(NAME): $(LIBFT) $(OBJ_MAIN)
+	ar rcs $(NAME) $(OBJ)/*
+
+$(OBJ)/%.o:	%.c
+					@mkdir -p $(OBJ)
+					@cc $(CFLAGS) -c $< -o $@
+
+clean:
+	@cd lib/libft && make clean -s
+	rm -rf $(OBJ)/*
+
+fclean: clean
+	@cd lib/libft && make fclean -s
+	rm -rf $(NAME)
+	rm -rf $(OBJ)
 
 re: fclean all
 

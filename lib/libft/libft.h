@@ -6,7 +6,7 @@
 /*   By: silndoj <silndoj@student.42heilbronn.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:39:52 by silndoj           #+#    #+#             */
-/*   Updated: 2024/03/20 16:45:16 by silndoj          ###   ########.fr       */
+/*   Updated: 2024/08/22 05:46:00 by silndoj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include "get_next_line.h"
+# include "ft_printf.h"
 
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
