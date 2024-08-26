@@ -2,10 +2,8 @@ CFLAGS 		= 	-Wall -Werror -Wextra
 
 LIBFT 		= 	lib/libft/libft.a
 
-$(LIBFT):
-		@cd lib/libft && make -s
-
-all: 		$(LIBFT)
+all:
+	@cd lib/libft && make -s
 	@cc $(CFLAGS) src/server.c $(LIBFT) -o server
 	@cc $(CFLAGS) src/client.c $(LIBFT) -o client
 
