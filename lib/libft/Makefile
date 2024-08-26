@@ -47,7 +47,8 @@ SRC 	=	ft_isalnum.c 	\
 			print_x.c		\
 			printf.c		\
 			get_next_line.c \
-			get_next_line_utils.c
+			get_next_line_utils.c \
+			ft_putchar_str.c
 
 OBJ			= 	obj
 OBJ_MAIN	=	$(SRC:%.c=$(OBJ)/%.o)
